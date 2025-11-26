@@ -1,0 +1,17 @@
+{
+  "name": "instagram-dog-account-discovery",
+  "version": "1.0.0",
+  "description": "Automated Instagram dog video account discovery with GitHub Actions",
+  "main": "src/instagram-scraper.js",
+  "scripts": {
+    "start": "node src/instagram-scraper.js",
+    "test": "echo \"Test\" && npm start"
+  },
+  "dependencies": {
+    "puppeteer": "^21.6.0",
+    "googleapis": "^128.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}  
