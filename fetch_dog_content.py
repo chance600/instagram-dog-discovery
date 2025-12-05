@@ -5,8 +5,8 @@ Fetches dog-related content from Reddit and YouTube using official APIs
 and appends results to Google Sheets.
 """
 
-import os base64
-import sys
+import os
+import base64
 import json
 import logging
 from datetime import datetime
