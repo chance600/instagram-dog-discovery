@@ -5,7 +5,7 @@ Fetches dog-related content from Reddit and YouTube using official APIs
 and appends results to Google Sheets.
 """
 
-import os
+import os base64
 import sys
 import json
 import logging
@@ -117,8 +117,12 @@ class DogContentFetcher:
             logger.info("✓ YouTube client initialized")
             
             # Initialize Google Sheets
-            creds_dict = json.loads(GOOGLE_CREDENTIALS_JSON)
-            credentials = service_account.Credentials.from_service_account_info(
+            # Try base64 decoding first, then fallback to plain JSON
+            try:
+                creds_json = base64.b64decode(GOOGLE_CREDENTIALS_JSON).decode('utf-8')
+            except Exception:
+                creds_json = GOOGLE_CREDENTIALS_JSON
+            creds_dict = json.loads(creds_json)            credentials = service_account.Credentials.from_service_account_info(
                 creds_dict,
                 scopes=['https://www.googleapis.com/auth/spreadsheets']
             )
