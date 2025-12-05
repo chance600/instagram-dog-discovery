@@ -122,8 +122,9 @@ class DogContentFetcher:
                 creds_json = base64.b64decode(GOOGLE_CREDENTIALS_JSON).decode('utf-8')
             except Exception:
                 creds_json = GOOGLE_CREDENTIALS_JSON
-            creds_dict = json.loads(creds_json)            credentials = service_account.Credentials.from_service_account_info(
-                creds_dict,
+            creds_dict = json.loads(creds_json)
+            
+            credentials = service_account.Credentials.from_service_account_info(                creds_dict,
                 scopes=['https://www.googleapis.com/auth/spreadsheets']
             )
             self.sheets_client = gspread.authorize(credentials)
